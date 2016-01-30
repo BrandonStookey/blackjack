@@ -6,9 +6,10 @@
   height: 140px;
   margin-right: 20px;
 }
-
 .covered {
-  background-color: black;
+  background-size: cover;
+  background-image: url('../img/card-back.png');
+  background-size: 100%;
 }
 
 .hand {

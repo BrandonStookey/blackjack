@@ -4,20 +4,8 @@ class window.Hand extends Backbone.Collection
   initialize: (array, @deck, @isDealer) -> 
     @on('add', @scoreChecker)
 
-
   hit: ->
     @add(@deck.pop())
-
-  # stand: ->
-  #   console.log this.minScore();
-  #   window.bothScores.push(this.minScore())
-    # scoreResult = [];
-    # scoreResult.push(this.minScore());
-    # console.log(scoreResult);
-    # if dealerScore > playerScore
-    #   alert "Dealer won!"
-    # else
-    #   alert "You won dude!"
 
   hasAce: -> @reduce (memo, card) ->
     memo or card.get('value') is 1
@@ -35,6 +23,13 @@ class window.Hand extends Backbone.Collection
 
 
   scoreChecker: ->
-    if @minScore() > 21
-      alert 'Busted Dude! Dealer wins!'
+    if not @isDealer
+      if @minScore() > 21
+        alert 'Busted Dude! Dealer wins!'
+
+  flipCheck: ->
+    _.each(@, -> (item)
+      if !item.get('revealed')
+        item.set('revealed', true)
+      )
 

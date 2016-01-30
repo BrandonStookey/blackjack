@@ -1,3 +1,10 @@
+//todo
+//make it so dealer card flips on stand
+//write tests
+//make it look good
+
+
+
 // BlackJack
 // Play against dealer
 // Dealer usually has to hit if under 17

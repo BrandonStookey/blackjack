@@ -10,8 +10,9 @@ class window.Card extends Backbone.Model
         when 11 then 'Jack'
         when 12 then 'Queen'
         else params.rank
-      img: 'img/cards/' is @value is '-' is @suitName is '.png'
-
+    @set
+      img: './img/cards/' + @get('value') + '-' + @get('suitName') + '.png';
+      console.log 'img',  './img/cards/' + @get('value') + '-' + @get('suitName') + '.png';  
   flip: ->
     @set 'revealed', !@get 'revealed'
     @
