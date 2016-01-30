@@ -5,4 +5,16 @@ class window.App extends Backbone.Model
     @set 'deck', deck = new Deck()
     @set 'playerHand', deck.dealPlayer()
     @set 'dealerHand', deck.dealDealer()
-    
+
+  standChecker: ->
+    if @get('playerHand').minScore() > @get('dealerHand').minScore()
+      alert 'You won dude!'
+      else
+        alert 'Dealer takes your $$$$$'  
+
+
+
+
+
+
+ 
