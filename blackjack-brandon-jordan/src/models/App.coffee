@@ -6,8 +6,8 @@ class window.App extends Backbone.Model
     @set 'playerHand', deck.dealPlayer()
     @set 'dealerHand', deck.dealDealer()
 
-  standChecker: ->  
-    # @get('dealerHand').flipCheck()
+  standChecker: ->
+    @get('dealerHand').flipCheck();
     if  @get('dealerHand').minScore() < 17
       @get('dealerHand').hit()
       @standChecker()

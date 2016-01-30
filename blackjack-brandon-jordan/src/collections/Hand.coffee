@@ -7,6 +7,12 @@ class window.Hand extends Backbone.Collection
   hit: ->
     @add(@deck.pop())
 
+  # standChecker: ->
+  #   @trigger, 'standChecker', @
+  #   console.log('Hey am I working!?')
+  #   @first().flip()
+  #   # console.log(@first().flip())
+
   hasAce: -> @reduce (memo, card) ->
     memo or card.get('value') is 1
   , 0
@@ -28,8 +34,6 @@ class window.Hand extends Backbone.Collection
         alert 'Busted Dude! Dealer wins!'
 
   flipCheck: ->
-    _.each(@, -> (item)
-      if !item.get('revealed')
-        item.set('revealed', true)
-      )
+    if @isDealer
+      @at(0).set('revealed', true);
 
