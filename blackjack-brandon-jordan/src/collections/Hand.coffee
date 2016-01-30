@@ -1,10 +1,16 @@
 class window.Hand extends Backbone.Collection
   model: Card
 
-  initialize: (array, @deck, @isDealer) ->
+  initialize: (array, @deck, @isDealer) -> 
+    @on('add', @scoreChecker)
 
   hit: ->
     @add(@deck.pop())
+
+  stand: ->
+    console.log 'stand'
+    console.log this.minScore()
+    @trigger('stand', @)
 
   hasAce: -> @reduce (memo, card) ->
     memo or card.get('value') is 1
@@ -20,4 +26,6 @@ class window.Hand extends Backbone.Collection
     # when there is an ace, it offers you two scores - the original score, and score + 10.
     [@minScore(), @minScore() + 10 * @hasAce()]
 
-
+  scoreChecker: ->
+    if @minScore() > 21
+      console.log 'Busted!'
