@@ -4,14 +4,13 @@ class window.Hand extends Backbone.Collection
   initialize: (array, @deck, @isDealer) -> 
     @on('add', @scoreChecker)
 
+
   hit: ->
     @add(@deck.pop())
 
-  # standChecker: ->
-  #   @trigger, 'standChecker', @
-  #   console.log('Hey am I working!?')
-  #   @first().flip()
-  #   # console.log(@first().flip())
+  bet: ->
+    alert 'You bet the whole farm!!!!!!'
+
 
   hasAce: -> @reduce (memo, card) ->
     memo or card.get('value') is 1

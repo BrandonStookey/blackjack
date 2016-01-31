@@ -16,7 +16,7 @@ class window.App extends Backbone.Model
     else if @get('playerHand').minScore() > @get('dealerHand').minScore()
       alert 'You won dude!'
     else
-      alert 'Dealer takes your $$$$$'  
+      alert 'Dealer takes your Farm'  
 
 
 
